@@ -41,8 +41,10 @@ def set_proccessingValve(val):
 
 
 phbValveTemp = PIDController(1, 0, 0, set_phbValve)
+phbValveFlow = PIDController(1, 0.1, 0.3, set_phbValve)
 phbTemp = Sensor([phbValveTemp], 10, 0)
-phb = Unit([phbTemp])
+phbFlow = Sensor([phbValveFlow], 10, 0)
+phb = Unit([phbTemp,phbFlow])
 
 for i in range(10):
     phb.run()
